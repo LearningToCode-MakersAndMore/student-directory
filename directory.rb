@@ -33,7 +33,8 @@ def input_students(students)
   puts "Please enter the names of the students you would like to add\nTo finish, just hit return twice"
   name = gets.chomp
   if !name.empty?
-    students << {name: name, cohort: :unkown}
+    students << {name: name, cohort: :november}
+    puts "Now we have #{students.count} students"
     input_students(students)
   end
 end
