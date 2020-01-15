@@ -17,4 +17,4 @@ students = [
 # and then printing them
 students.each { |name| puts name}
 # finally, we print the total number of students, student_count
-print "Overall, we have #{student_count} great students"
+print "Overall, we have #{students.count} great students"
