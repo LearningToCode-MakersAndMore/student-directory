@@ -20,7 +20,7 @@ end
 
 # method to print students
 def print(names)
-  names.each { |student| puts "#{student[:name]} (#{student[:cohort]} cohort)" }
+  names.each_with_index { |student, i| puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)" }
 end
 
 # method to print number of students
