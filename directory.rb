@@ -15,6 +15,6 @@ students = [
   'Norman Bates',
 ]
 # and then printing them
-[*0..(student_count - 1)].each { |n| puts students[n] }
+students.each { |name| puts name}
 # finally, we print the total number of students, student_count
 print "Overall, we have #{student_count} great students"
