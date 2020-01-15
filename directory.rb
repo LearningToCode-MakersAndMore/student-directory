@@ -1,5 +1,3 @@
-# define variable for number of students
-student_count = 11
 # putting students in array
 students = [
   'Dr. Hannibal Lecter',
