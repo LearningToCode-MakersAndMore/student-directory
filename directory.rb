@@ -32,7 +32,7 @@ end
 def input_students(students)
   puts "Please enter the names of the students you would like to add\nTo finish, just hit return twice"
   name = gets.chomp
-  if name != ''
+  if !name.empty?
     students << {name: name, cohort: :unkown}
     input_students(students)
   end
