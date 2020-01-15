@@ -1,3 +1,5 @@
+=begin
+comment origonal code so i can implement user imput method
 # putting students in array
 students = [
   {name: 'Dr. Hannibal Lecter', cohort: :november},
@@ -30,3 +32,26 @@ end
 print_header
 print students
 print_footer students
+=end
+
+# define students array
+students = []
+
+# define user input method
+def input_students(students)
+  puts 'Please enter the names of the students'
+  name = gets.chomp
+  if name != ''
+    students << name
+    input_students(students)
+  else
+    print(students)
+  end
+end
+
+# define print method
+def print(students)
+  students.each { |student| puts "#{student}" }
+end
+
+input_students(students)
