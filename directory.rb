@@ -18,7 +18,7 @@ def print_header
 end
 # method to print students
 def print(names)
-  names.each { |name| puts "#{name[0]} #{name[1]} cohort" }
+  names.each { |student| puts "#{student[0]} #{student[1]} cohort" }
 end
 
 # method to print number of students
