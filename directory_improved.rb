@@ -20,7 +20,9 @@ end
 
 # method to print students
 def print(names)
-  names.each_with_index { |student, i| puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)" if student[:name][0].downcase == 't' }
+  # bellow is commited code for only printing names beining with t
+  # names.each_with_index { |student, i| puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)" if student[:name][0].downcase == 't' }
+  names.each_with_index { |student, i| puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort)" if student[:name].length < 12 }
 end
 
 # method to print number of students
