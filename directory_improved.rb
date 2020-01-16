@@ -31,7 +31,7 @@ def print(names)
   #  puts "#{count+1}. #{students[count][:name]} (#{students[count][:cohort]} cohort)"
   #  count += 1
   # end
-  names.each_with_index { |student, i| puts "#{i+1}. #{student[:name]} (#{student[:cohort]} cohort) hobby is: #{student[:hobby]}" }
+  names.each_with_index { |student, i| puts "#{(i+1).to_s.center(3)}. #{student[:name].center(15)} #{"(#{student[:cohort]} cohort)".center(20)} #{"hobby is: #{student[:hobby]}".center(20)}" }
 end
 
 # method to print number of students
