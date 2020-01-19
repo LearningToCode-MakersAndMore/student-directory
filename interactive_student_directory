@@ -39,7 +39,7 @@ def disp_students
 end
 
 def prompt
-  puts "1. Input students\n2. Display students\n9. Exit"
+  puts "1. Input students\n2. Display students\n3. Display saved students\n4. Save students\n9. Exit"
   selection = gets.chomp
 end
 
@@ -49,11 +49,28 @@ def process(selection)
     input_students
   when '2'
     disp_students
+  when '3'
+    disp_saved_students
+  when '4'
+    save_students
   when '9'
     exit
   else
     puts "#{selection} - is an invalid input"
   end
+end
+
+def disp_saved_students
+  require 'csv'
+  print CSV.read('./student_list')
+end
+
+def save_students
+  file = File.open('student_list', 'w')
+  @students.each do |student|
+    file.puts "#{student[:name]},#{student[:cohort]}"
+  end
+  file.close
 end
 
 def interactive_menu
