@@ -36,5 +36,5 @@ end
 
 students = input_students
 print_header
-print_students(students)
+print_students(students) if students.empty? == false
 print_footer(students)
