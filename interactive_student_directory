@@ -1,18 +1,20 @@
-def input_students(students)
-  puts "Please enter the names of the students"
-  puts "To finish, just hit return twice"
-  # get the first name
+@students = []
+def prompt_students
+  puts "Please enter the names of the students\nTo finish, just hit return twice"
   name = gets.chomp
-  # while the name is not empty, repeat this code
+end
+
+def add_student(name)
   while name.empty? == false do
-  # add the student hash to the array
-    students << { name: name.to_sym, cohort: :november }
-    puts "Now we have #{students.count} students"
-  # get another name from the user
+    @students << { name: name.to_sym, cohort: :november }
+    puts "Now we have #{@students.count} students"
     name = gets.chomp
   end
-  # return the array of students
-  students
+end
+
+def input_students
+  name = prompt_students
+  add_student(name)
 end
 
 def print_header
@@ -20,34 +22,44 @@ def print_header
   puts '-------------'
 end
 
-def print_students(students)
-  students.each do |student|
+def print_students
+  @students.each do |student|
     puts "#{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
-def print_footer(names)
-  print "Overall, we have #{names.count} great students"
+def print_footer
+  print "Overall, we have #{@students.count} great students"
+end
+
+def disp_students
+  print_header
+  print_students
+  print_footer
+end
+
+def prompt
+  puts "1. Input students\n2. Display students\n9. Exit"
+  selection = gets.chomp
+end
+
+def process(selection)
+  case selection
+  when '1'
+    input_students
+  when '2'
+    disp_students
+  when '9'
+    exit
+  else
+    puts "#{selection} - is an invalid input"
+  end
 end
 
 def interactive_menu
-  students = []
-  loop do
-    puts "1. Input students\n2. Display students\n9. Exit"
-    selection = gets.chomp.to_i
-    case selection
-    when 1
-      students = input_students(students)
-    when 2
-      print_header
-      print_students(students)
-      print_footer(students)
-    when 9
-      exit
-    else
-      puts "#{selection} - is an invalid input"
-    end
-  end
+    selection = prompt
+    process(selection)
+    interactive_menu
 end
 
 interactive_menu
