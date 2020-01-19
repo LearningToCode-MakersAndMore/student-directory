@@ -62,7 +62,7 @@ end
 
 def disp_saved_students
   require 'csv'
-  print CSV.read('./student_list')
+  puts CSV.read('./student_list')
 end
 
 def save_students
