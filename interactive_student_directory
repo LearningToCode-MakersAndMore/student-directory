@@ -1,8 +1,6 @@
-def input_students
+def input_students(students)
   puts "Please enter the names of the students"
   puts "To finish, just hit return twice"
-  # create an empty array
-  students = []
   # get the first name
   name = gets.chomp
   # while the name is not empty, repeat this code
@@ -22,19 +20,34 @@ def print_header
   puts '-------------'
 end
 
-def print(students)
+def print_students(students)
   students.each do |student|
     puts "#{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
-
 def print_footer(names)
   print "Overall, we have #{names.count} great students"
 end
 
+def interactive_menu
+  students = []
+  loop do
+    puts "1. Input students\n2. Display students\n9. Exit"
+    selection = gets.chomp.to_i
+    case selection
+    when 1
+      students = input_students(students)
+    when 2
+      print_header
+      print_students(students)
+      print_footer(students)
+    when 9
+      exit
+    else
+      puts "#{selection} - is an invalid input"
+    end
+  end
+end
 
-students = input_students
-print_header
-print(students) if students.empty? == false
-print_footer(students)
+interactive_menu

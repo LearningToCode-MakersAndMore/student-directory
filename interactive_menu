@@ -1,0 +1,20 @@
+def interactive_menu
+  students = []
+  loop do
+    puts "1. Input students\n2. Display students\n9. Exit"
+    selection = gets.chomp.to_i
+    case selection
+    when 1
+      students = input_students
+    when 2
+      print_header
+      print_students(students)
+      print_footer(students)
+    when 9
+      exit
+    else
+      puts "#{selection} - is an invalid input"
+    end
+  end
+end
+interactive_menu
