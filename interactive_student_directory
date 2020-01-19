@@ -62,21 +62,43 @@ end
 
 def disp_saved_students
   require 'csv'
-  puts CSV.read('./student_list')
+  puts CSV.read("./#{@student_list}")
 end
 
 def save_students
-  file = File.open('student_list', 'w')
+  file = File.open('student_list', 'a')
   @students.each do |student|
-    file.puts "#{student[:name]},#{student[:cohort]}"
+    file.puts "#{student[:name]}-#{student[:cohort]},"
+  end
+  file.close
+  load_students
+end
+
+def load_students
+  file = File.open(@student_list, "r")
+  file.readlines.each do |line|
+    name, cohort = line.chomp.split('-')
+    @students << {name: name, cohort: cohort}
   end
   file.close
 end
 
+def arg_check
+  if ARGV.first != nil
+    @student_list = ARGV.first.to_s
+  else
+    @student_list = 'student_list'
+  end
+end
+
 def interactive_menu
+  arg_check
+  File.exists?(@student_list) ? load_students : exit
+  loop do
     selection = prompt
     process(selection)
-    interactive_menu
+  end
 end
+
 
 interactive_menu
