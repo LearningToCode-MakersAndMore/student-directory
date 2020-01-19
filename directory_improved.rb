@@ -42,10 +42,10 @@ end
 # method to input students
 def input_students(students)
   puts "Please enter the names of the students you would like to add\nTo finish, just hit return twice"
-  name = gets.chomp
+  name = gets.rstrip
   if !name.empty?
     students << {name: name, cohort: :november, hobby: 'painting'}
-    puts "Now we have #{students.count} students"
+    puts "Now we have #{students.count} student#{'s' if students.count != 1}"
     input_students(students)
   end
 end
